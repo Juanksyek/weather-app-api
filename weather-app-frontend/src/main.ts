@@ -1,6 +1,14 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+// main.ts
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module'; // Ajusta la ruta según tu estructura de carpetas
+import { environment } from './environments/environmet'; // Ajusta la ruta según tu estructura de carpetas
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
