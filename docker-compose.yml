@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  backend:
+    build: ./weather-app-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+
+  frontend:
+    build: ./weather-app-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
